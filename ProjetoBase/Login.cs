@@ -1,15 +1,7 @@
-﻿using ProjetoBase.Formularios;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Windows.Forms;
-using ProjetoBase.CustomControls;
+﻿using ProjetoBase.CustomControls;
 using ProjetoBase.DataBase;
-using ProjetoBase.DataBase.Ferramentas;
+using ProjetoBase.Formularios;
+using System;
 
 namespace ProjetoBase
 {

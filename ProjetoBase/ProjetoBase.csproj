@@ -134,6 +134,7 @@
     <Compile Include="DataBase\Mapeamento\Funcionario\PerfilDeAcessoMap.cs" />
     <Compile Include="DataBase\Mapeamento\Funcionario\SessaoLoginMap.cs" />
     <Compile Include="DataBase\Mapeamento\Funcionario\UsuarioMap.cs" />
+    <Compile Include="Enumeradores\EnumAutorizacaoAcao.cs" />
     <Compile Include="Enumeradores\EnumNivelDeAcesso.cs" />
     <Compile Include="Enumeradores\EnumResultadoQuery.cs" />
     <Compile Include="Enumeradores\EnumTamanhoTextBox.cs" />
@@ -144,6 +145,8 @@
     <Compile Include="Enumeradores\EnumTipoTextBox.cs" />
     <Compile Include="Exception\ExceptionManager.cs" />
     <Compile Include="Exception\HistoricoException.cs" />
+    <Compile Include="Ferramentas\AutorizacaoAcao.cs" />
+    <Compile Include="Ferramentas\AutorizacaoAcaoManager.cs" />
     <Compile Include="Ferramentas\Config.cs" />
     <Compile Include="Ferramentas\ConfigManager.cs" />
     <Compile Include="Ferramentas\ExcecaoManager.cs" />
