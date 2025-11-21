@@ -1,226 +1,102 @@
 ﻿using NHibernate.Criterion;
-using NHibernate.Transform;
 using ProjetoBase.CustomControls;
 using ProjetoBase.DataBase;
 using ProjetoBase.DataBase.Dominio.Funcionario;
-using ProjetoBase.DataBase.Dominio.Interface;
 using ProjetoBase.Ferramentas;
+using ProjetoBase.Ferramentas.Seguranca;
 using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Drawing;
-using System.Linq;
 using System.Windows.Forms;
-using ProjetoBase.Enumeradores;
 
 namespace ProjetoBase.Formularios.Ferramentas
 {
     public partial class LoginAcesso : FormCC
     {
-        public Funcionario funcionarioResponsavel = null;
-
-        Boolean salvarLog = false;
-        String acao;
-        String resumo;
-        EnumAutorizacaoAcao? autorizacao;
-
-        public Boolean permitirAutoAutorizacao = true;
+        public Usuario UsuarioLogado { get; private set; }
 
         public LoginAcesso()
         {
             InitializeComponent();
-
         }
 
-        public LoginAcesso(String acao, String resumo)
-        {
-            InitializeComponent();
-            this.salvarLog = true;
-            this.acao = acao;
-            this.resumo = resumo;
-        }
-
-
-        public LoginAcesso(String acao, String resumo, EnumAutorizacaoAcao autorizacao)
-        {
-            InitializeComponent();
-            this.salvarLog = true;
-            this.acao = acao;
-            this.resumo = resumo;
-            this.autorizacao = autorizacao;
-        }
-
-        public LoginAcesso(String acao, String resumo, Boolean permitirAutoAutorizacao)
-        {
-            InitializeComponent();
-            this.salvarLog = true;
-            this.acao = acao;
-            this.resumo = resumo;
-            this.permitirAutoAutorizacao = permitirAutoAutorizacao;
-        }
-
+        // ============================================
+        // BOTÃO SAIR
+        // ============================================
         private void btn_sair_Click(object sender, EventArgs e)
         {
-            this.DialogResult = DialogResult.No;
+            DialogResult = DialogResult.No;
+            Close();
         }
 
-        public Boolean acaoValidada()
-        {
-            Boolean validado = false;
-
-            if (autorizacao != null)
-            {
-                var qtd = SessionFactory.UnflushedSession().CreateSQLQuery($"select count(*) from autorizacao_acao_funcionario where funcionario_id = {SessaoSistema.funcionario.Id} and EnumAutorizacaoAcao = {Convert.ToInt32(autorizacao)}").UniqueResult<int>();
-                if (qtd == 1)
-                {
-                    validado = true;
-                    funcionarioResponsavel = SessaoSistema.funcionario;
-                    return validado;
-                }
-            }
-
-            if (SessaoSistema.funcionario?.usuario?.Administrador == true && permitirAutoAutorizacao)
-            {
-                if (MessageBox.Show("Deseja autorizar esta ação com o usuario: " + SessaoSistema.funcionario.Nome + "?", "Autorizar Ação?", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-                {
-                    funcionarioResponsavel = SessaoSistema.funcionario;
-                    fechar(DialogResult.Yes);
-                    validado = true;
-                }
-            }
-            else
-            {
-                var nivelDinamico = SessionFactory.UnflushedSession().QueryOver<NivelDeAcessoDinamico>().Where(x => x.Acao == acao).TransformUsing(Transformers.DistinctRootEntity).SingleOrDefault();
-
-                if (nivelDinamico?.Funcionarios?.Where(x => x.Id == SessaoSistema.funcionario.Id).Count() > 0)
-                {
-                    if (MessageBox.Show("Deseja autorizar esta ação com o usuario: " + SessaoSistema.funcionario.Nome + "?", "Autorizar Ação?", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-                    {
-                        funcionarioResponsavel = SessaoSistema.funcionario;
-                        fechar(DialogResult.Yes);
-                        validado = true;
-                    }
-                }
-            }
-
-            if (validado == false)
-            {
-
-                DialogResult resultado = this.ShowDialog();
-                if (resultado == DialogResult.Yes)
-                {
-                    validado = true;
-                }
-            }
-            return validado;
-
-        }
-
-        Boolean modoSimples = false;
-        internal void ModoSimples()
-        {
-            modoSimples = true;
-        }
-
-        public Funcionario FuncionariaResponsavel()
-        {
-            DialogResult resultado = this.ShowDialog();
-            if (resultado == DialogResult.Yes)
-            {
-                return funcionarioResponsavel;
-            }
-            else
-            {
-                return null;
-            }
-        }
-
-
-        private void ValidacaoAcao_Load(object sender, EventArgs e)
-        {
-
-        }
-
+        // ============================================
+        // BOTÃO CONFIRMAR LOGIN
+        // ============================================
         private void btn_ok_Click(object sender, EventArgs e)
         {
-            Usuario usuario = getUsuario();
-            var nivelDinamico = SessionFactory.UnflushedSession().QueryOver<NivelDeAcessoDinamico>().Where(x => x.Acao == acao).TransformUsing(Transformers.DistinctRootEntity).SingleOrDefault();
+            Usuario usuario = VerificarLogin();
 
             if (usuario != null)
             {
-                if (usuario.Administrador)
-                {
-                    funcionarioResponsavel = SessionFactory.UnflushedSession().QueryOver<Funcionario>().Where(x => x.usuario == usuario).TransformUsing(Transformers.DistinctRootEntity).SingleOrDefault();
-                    fechar(DialogResult.Yes);
-                }
-                else if (SessionFactory.UnflushedSession().CreateSQLQuery($"select count(*) from autorizacao_acao_funcionario where funcionario_id = {SessaoSistema.funcionario.Id} and EnumAutorizacaoAcao = {Convert.ToInt32(autorizacao)}").UniqueResult<int>() == 1)
-                {
-                    funcionarioResponsavel = SessionFactory.UnflushedSession().QueryOver<Funcionario>().Where(x => x.usuario == usuario).TransformUsing(Transformers.DistinctRootEntity).SingleOrDefault();
-                    fechar(DialogResult.Yes);
-                }
-                else if (nivelDinamico?.Funcionarios?.Where(x => x.Id == SessaoSistema.funcionario.Id).Count() > 0)
-                {
-                    if (MessageBox.Show("Deseja autorizar esta ação com o usuario: " + SessaoSistema.funcionario.Nome + "?", "Autorizar Ação?", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-                    {
-                        funcionarioResponsavel = SessaoSistema.funcionario;
-                        fechar(DialogResult.Yes);
-                    }
-                }
-                else
-                {
-                    MessageBox.Show("Este usuario não tem permissão para realizar esta ação.", "Contate um Administrador", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    fechar(DialogResult.No);
-                }
+                UsuarioLogado = usuario;
+                DialogResult = DialogResult.Yes;
+                MenuInicial MenuInicial = new MenuInicial();
+                this.Close();
+                MenuInicial.Show();
             }
             else
             {
-                MessageBox.Show("Login ou senha invalidos!", "Tente novamente", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show(
+                    "Usuário ou senha inválidos!",
+                    "Atenção",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning
+                );
             }
         }
 
-
-
-        public Usuario getUsuario()
+        // ============================================
+        // MÉTODO PARA VALIDAR LOGIN
+        // ============================================
+        private Usuario VerificarLogin()
         {
-            Usuario usuario = null;
+            string loginDigitado = txt_login.Texto?.Trim();
+            string senhaDigitada = txt_senha.Texto?.Trim();
 
-            IList<Usuario> listaUsuario = SessionFactory.UnflushedSession().QueryOver<Usuario>()
-                 .Where(
-               Restrictions.On<Usuario>(c => c.Login).IsLike(txt_login.Texto) &&
-               Restrictions.On<Usuario>(c => c.Senha).IsLike(txt_senha.Texto)
-               )
-                .TransformUsing(Transformers.RootEntity)
+            if (string.IsNullOrWhiteSpace(loginDigitado) || string.IsNullOrWhiteSpace(senhaDigitada))
+                return null;
+
+            // 1) BUSCA EXATA PELO LOGIN (Login é único)
+            Usuario usuario = SessionFactory.UnflushedSession()
+                .QueryOver<Usuario>()
+                .Where(u => u.Login == loginDigitado)
                 .Take(1)
-                .List<Usuario>();
+                .SingleOrDefault();
 
+            if (usuario == null)
+                return null;
 
-            if (listaUsuario.Count == 1)
+            // 2) VALIDA SENHA USANDO O HASH
+            bool senhaValida = Criptografia.VerificarSenha(senhaDigitada, usuario.Senha);
+
+            return senhaValida ? usuario : null;
+        }
+
+        // ============================================
+        // CADASTRO DE USUÁRIO
+        // ============================================
+        private void btn_cadastrar_usuario_Click(object sender, EventArgs e)
+        {
+            using (var tela = new CadastroUsuario())
             {
-                usuario = listaUsuario[0];
-            }
-
-            return usuario;
-        }
-
-        private void btn_configurar_autorizacao_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void NivelAcessoDinamicoCadastro_OnSalvo(Entidade entidade)
-        {
-
-        }
-
-        private void ValidacaoAcao_Shown(object sender, EventArgs e)
-        {
-            var nivelAcesso = SessionFactory.UnflushedSession().QueryOver<NivelDeAcessoDinamico>().TransformUsing(Transformers.DistinctRootEntity).Where(x => x.Acao == acao).SingleOrDefault();
-
-            if (nivelAcesso == null && modoSimples == false)
-            {
-                this.Size = new Size(224, 252);
+                if (tela.ShowDialog() == DialogResult.OK)
+                {
+                    MessageBox.Show(
+                        "Usuário cadastrado com sucesso!",
+                        "Sucesso",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Information
+                    );
+                }
             }
         }
     }
-
 }

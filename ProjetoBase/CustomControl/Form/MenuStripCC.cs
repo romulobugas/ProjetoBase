@@ -1,14 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Diagnostics;
+﻿using ProjetoBase.Config;
+using ProjetoBase.CustomControl.Form;
 using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
-using ProjetoBase.Config;
-using ProjetoBase.Enumeradores;
-using ProjetoBase.Ferramentas;
 
 namespace ProjetoBase.CustomControls
 {
@@ -34,74 +27,29 @@ namespace ProjetoBase.CustomControls
 
     public class MyColors : ProfessionalColorTable
     {
-        public override Color MenuItemSelected
-        {
-            get { return LayoutManager.corSelecaoItemMenuStrip; }
-        }
+        public override Color MenuItemSelected => LayoutManager.corSelecaoItemMenuStrip;
+        public override Color ToolStripDropDownBackground => LayoutManager.corItemMenuStrip;
 
-        public override Color ToolStripDropDownBackground
-        {
-            get { return LayoutManager.corItemMenuStrip; }
-        }
+        public override Color ImageMarginGradientBegin => LayoutManager.corItemMenuStrip;
+        public override Color ImageMarginGradientEnd => LayoutManager.corItemMenuStrip;
+        public override Color ImageMarginGradientMiddle => LayoutManager.corItemMenuStrip;
 
-        public override Color ImageMarginGradientBegin
-        {
-            get { return LayoutManager.corItemMenuStrip; }
-        }
+        public override Color MenuItemSelectedGradientBegin => LayoutManager.corSelecaoItemMenuStrip;
+        public override Color MenuItemSelectedGradientEnd => LayoutManager.corSelecaoItemMenuStrip;
 
-        public override Color ImageMarginGradientEnd
-        {
-            get { return LayoutManager.corItemMenuStrip; }
-        }
+        public override Color MenuItemPressedGradientBegin => LayoutManager.corSelecaoItemMenuStrip;
+        public override Color MenuItemPressedGradientMiddle => LayoutManager.corSelecaoItemMenuStrip;
+        public override Color MenuItemPressedGradientEnd => LayoutManager.corSelecaoItemMenuStrip;
 
-        public override Color ImageMarginGradientMiddle
-        {
-            get { return LayoutManager.corItemMenuStrip; }
-        }
-
-        public override Color MenuItemSelectedGradientBegin
-        {
-            get { return LayoutManager.corSelecaoItemMenuStrip; }
-        }
-        public override Color MenuItemSelectedGradientEnd
-        {
-            get { return LayoutManager.corSelecaoItemMenuStrip; }
-        }
-
-        public override Color MenuItemPressedGradientBegin
-        {
-            get { return LayoutManager.corSelecaoItemMenuStrip; }
-        }
-
-        public override Color MenuItemPressedGradientMiddle
-        {
-            get { return LayoutManager.corSelecaoItemMenuStrip; }
-        }
-
-        public override Color MenuItemPressedGradientEnd
-        {
-            get { return LayoutManager.corSelecaoItemMenuStrip; }
-        }
-
-        public override Color MenuItemBorder
-        {
-            get { return LayoutManager.corSelecaoItemMenuStrip; }
-        }
-
+        public override Color MenuItemBorder => LayoutManager.corSelecaoItemMenuStrip;
     }
 
-    public class ToolStripMenuItemCC : ToolStripMenuItem
+    /// <summary>
+    /// Menu customizado que mantém estilo visual,
+    /// mas herda o sistema de acesso corretamente.
+    /// </summary>
+    public class ToolStripMenuItemCC : MenuItemAcessivel
     {
-        private EnumNivelDeAcesso? nivelAcesso = null;
-
-     
-        [Description("Nivel de acesso do botão"), Category("Definição")]
-        public EnumNivelDeAcesso? NivelDeAcesso
-        {
-            get { return nivelAcesso; }
-            set { nivelAcesso = value; }
-        }
-
         public ToolStripMenuItemCC()
         {
             this.ForeColor = LayoutManager.corTextoStrip;

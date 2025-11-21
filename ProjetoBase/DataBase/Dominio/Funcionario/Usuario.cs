@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Drawing;
-using System.Linq;
-using System.Text;
 
 namespace ProjetoBase.DataBase.Dominio.Funcionario
 {
@@ -18,6 +15,7 @@ namespace ProjetoBase.DataBase.Dominio.Funcionario
         public virtual Boolean ResetarSenha { get; set; }
         public virtual Boolean ReceberAlertas { get; set; }
         public virtual Funcionario Funcionario { get; set; }
+        public virtual string IpHost { get; set; }
 
         public Usuario()
         {

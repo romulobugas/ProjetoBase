@@ -56,6 +56,7 @@
             this.txt_login.TamanhoTextBox = ProjetoBase.Enumeradores.EnumTamanhoTextBox.Pequeno;
             this.txt_login.Texto = null;
             this.txt_login.TipoTextBox = ProjetoBase.Enumeradores.TipoTextBox.Texto;
+            this.txt_login.Paint += new System.Windows.Forms.PaintEventHandler(this.txt_login_Paint);
             // 
             // txt_senha
             // 

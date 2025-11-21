@@ -2,15 +2,8 @@
 {
     partial class LoginAcesso
     {
-        /// <summary>
-        /// Required designer variable.
-        /// </summary>
         private System.ComponentModel.IContainer components = null;
 
-        /// <summary>
-        /// Clean up any resources being used.
-        /// </summary>
-        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
@@ -20,12 +13,7 @@
             base.Dispose(disposing);
         }
 
-        #region Windows Form Designer generated code
 
-        /// <summary>
-        /// Required method for Designer support - do not modify
-        /// the contents of this method with the code editor.
-        /// </summary>
         private void InitializeComponent()
         {
             this.txt_login = new ProjetoBase.CustomControls.TextboxLabelCC();
@@ -33,7 +21,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.btn_ok = new ProjetoBase.CustomControls.BotaoCC();
             this.btn_sair = new ProjetoBase.CustomControls.BotaoCC();
-            this.btn_configurar_autorizacao = new ProjetoBase.CustomControls.BotaoCC();
+            this.btn_cadastrar_usuario = new ProjetoBase.CustomControls.BotaoCC();
             this.SuspendLayout();
             // 
             // txt_login
@@ -81,7 +69,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold);
             this.label1.Location = new System.Drawing.Point(30, 9);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(141, 25);
@@ -95,11 +83,9 @@
             this.btn_ok.ForeColor = System.Drawing.Color.DarkBlue;
             this.btn_ok.Location = new System.Drawing.Point(114, 130);
             this.btn_ok.Name = "btn_ok";
-            this.btn_ok.NivelDeAcesso = null;
             this.btn_ok.Size = new System.Drawing.Size(82, 35);
             this.btn_ok.TabIndex = 3;
             this.btn_ok.Text = "OK";
-            this.btn_ok.TipoBotao = ProjetoBase.Enumeradores.TipoBotao.OK;
             this.btn_ok.UseVisualStyleBackColor = true;
             this.btn_ok.Click += new System.EventHandler(this.btn_ok_Click);
             // 
@@ -110,59 +96,50 @@
             this.btn_sair.ForeColor = System.Drawing.Color.Black;
             this.btn_sair.Location = new System.Drawing.Point(12, 130);
             this.btn_sair.Name = "btn_sair";
-            this.btn_sair.NivelDeAcesso = null;
             this.btn_sair.Size = new System.Drawing.Size(82, 35);
             this.btn_sair.TabIndex = 4;
             this.btn_sair.Text = "Sair";
-            this.btn_sair.TipoBotao = ProjetoBase.Enumeradores.TipoBotao.Sair;
             this.btn_sair.UseVisualStyleBackColor = true;
             this.btn_sair.Click += new System.EventHandler(this.btn_sair_Click);
             // 
-            // btn_configurar_autorizacao
+            // btn_cadastrar_usuario
             // 
-            this.btn_configurar_autorizacao.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_configurar_autorizacao.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_configurar_autorizacao.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
-            this.btn_configurar_autorizacao.Location = new System.Drawing.Point(12, 174);
-            this.btn_configurar_autorizacao.Name = "btn_configurar_autorizacao";
-            this.btn_configurar_autorizacao.NivelDeAcesso = null;
-            this.btn_configurar_autorizacao.Size = new System.Drawing.Size(184, 29);
-            this.btn_configurar_autorizacao.TabIndex = 5;
-            this.btn_configurar_autorizacao.Text = "Configurar Autorização";
-            this.btn_configurar_autorizacao.TipoBotao = ProjetoBase.Enumeradores.TipoBotao.BotaoGenerico;
-            this.btn_configurar_autorizacao.UseVisualStyleBackColor = true;
-            this.btn_configurar_autorizacao.Click += new System.EventHandler(this.btn_configurar_autorizacao_Click);
+            this.btn_cadastrar_usuario.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_cadastrar_usuario.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
+            this.btn_cadastrar_usuario.ForeColor = System.Drawing.Color.FromArgb(192, 64, 0);
+            this.btn_cadastrar_usuario.Location = new System.Drawing.Point(12, 174);
+            this.btn_cadastrar_usuario.Name = "btn_cadastrar_usuario";
+            this.btn_cadastrar_usuario.Size = new System.Drawing.Size(184, 29);
+            this.btn_cadastrar_usuario.TabIndex = 5;
+            this.btn_cadastrar_usuario.Text = "Cadastre-se";
+            this.btn_cadastrar_usuario.UseVisualStyleBackColor = true;
+            this.btn_cadastrar_usuario.Click += new System.EventHandler(this.btn_cadastrar_usuario_Click);
             // 
-            // ValidacaoAcao
+            // LoginAcesso
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BotaoEnter = this.btn_ok;
             this.BotaoEscape = this.btn_sair;
             this.ClientSize = new System.Drawing.Size(213, 213);
-            this.Controls.Add(this.btn_configurar_autorizacao);
+            this.Controls.Add(this.btn_cadastrar_usuario);
             this.Controls.Add(this.btn_sair);
             this.Controls.Add(this.btn_ok);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txt_senha);
             this.Controls.Add(this.txt_login);
-            this.Name = "ValidacaoAcao";
+            this.Name = "LoginAcesso";
             this.Nome_janela = "Validar Ação";
             this.Text = "ValidacaoAcao";
-            this.Load += new System.EventHandler(this.ValidacaoAcao_Load);
-            this.Shown += new System.EventHandler(this.ValidacaoAcao_Shown);
             this.ResumeLayout(false);
             this.PerformLayout();
-
         }
-
-        #endregion
 
         private CustomControls.TextboxLabelCC txt_login;
         private CustomControls.TextboxLabelCC txt_senha;
         private System.Windows.Forms.Label label1;
         private CustomControls.BotaoCC btn_ok;
         private CustomControls.BotaoCC btn_sair;
-        private CustomControls.BotaoCC btn_configurar_autorizacao;
+        private CustomControls.BotaoCC btn_cadastrar_usuario;
     }
 }

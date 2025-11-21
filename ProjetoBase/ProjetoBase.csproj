@@ -106,6 +106,7 @@
     <Compile Include="CustomControl\Validacao\ValidacaoTextBox.cs" />
     <Compile Include="CustomControl\ValorManager.cs" />
     <Compile Include="DataBase\Dominio\Cliente\Cliente.cs" />
+    <Compile Include="DataBase\Dominio\Funcionario\CadastroUsuarioModel.cs" />
     <Compile Include="DataBase\Dominio\Funcionario\Cargo.cs" />
     <Compile Include="DataBase\Dominio\Funcionario\Funcionario.cs" />
     <Compile Include="DataBase\Dominio\Funcionario\NivelDeAcesso.cs" />
@@ -114,14 +115,23 @@
     <Compile Include="DataBase\Dominio\Funcionario\PerfilDeAcesso.cs" />
     <Compile Include="DataBase\Dominio\Funcionario\SessaoLogin.cs" />
     <Compile Include="DataBase\Dominio\Funcionario\Usuario.cs" />
+    <Compile Include="DataBase\Ferramentas\CadastroUsuario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DataBase\Ferramentas\CadastroUsuario.Designer.cs">
+      <DependentUpon>CadastroUsuario.cs</DependentUpon>
+    </Compile>
     <Compile Include="DataBase\Ferramentas\ConfigurationFileCache.cs" />
     <Compile Include="DataBase\Ferramentas\DeepTransformer.cs" />
     <Compile Include="DataBase\Ferramentas\EntidadeManager.cs" />
     <Compile Include="DataBase\Ferramentas\ICrud.cs" />
+    <Compile Include="DataBase\Ferramentas\Rede\InfoRede.cs" />
     <Compile Include="DataBase\Ferramentas\Repositorio.cs" />
     <Compile Include="DataBase\Ferramentas\Repositorios.cs" />
+    <Compile Include="DataBase\Ferramentas\Seguranca\Criptografia.cs" />
     <Compile Include="DataBase\Ferramentas\SessionFactory.cs" />
     <Compile Include="DataBase\Ferramentas\SqlStatementInterceptor.cs" />
+    <Compile Include="DataBase\Ferramentas\UsuarioAcessoManager.cs" />
     <Compile Include="DataBase\Interface\ComboBoxInterface.cs" />
     <Compile Include="DataBase\Interface\DeletavelInterface.cs" />
     <Compile Include="DataBase\Interface\Entidade.cs" />
@@ -237,6 +247,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="CustomControl\Input\SeletorCC.resx">
       <DependentUpon>SeletorCC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DataBase\Ferramentas\CadastroUsuario.resx">
+      <DependentUpon>CadastroUsuario.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Cargo\CargoCadastro.resx">
       <DependentUpon>CargoCadastro.cs</DependentUpon>

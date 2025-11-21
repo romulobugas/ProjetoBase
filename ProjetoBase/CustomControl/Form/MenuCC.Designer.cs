@@ -1,4 +1,11 @@
 ﻿using ProjetoBase.CustomControls;
+using ProjetoBase.DataBase.Dominio.Funcionario;
+using ProjetoBase.Enumeradores;
+using System;
+using System.Collections.Generic;
+using System.Drawing;
+using System.Linq;
+using System.Windows.Forms;
 
 namespace ProjetoBase.CustomControl.Form
 {
@@ -22,8 +29,26 @@ namespace ProjetoBase.CustomControl.Form
             base.Dispose(disposing);
         }
 
-        #region Windows Form Designer generated code
+        #region Inicializacao de variaveis
 
+        private MenuStripCC menuStrip1;
+        private ToolStripMenuItemCC cadastroToolStripMenuItem;
+        private ToolStripMenuItemCC relatoriosToolStripMenuItem;
+        private ToolStripMenuItemCC administracaoToolStripMenuItem;
+        private ToolStripMenuItemCC rHToolStripMenuItem;
+        private ToolStripMenuItemCC cRMToolStripMenuItem;
+        private ToolStripMenuItemCC cargoToolStripMenuItem;
+        private ToolStripMenuItemCC usuarioToolStripMenuItem;
+        private ToolStripMenuItemCC clienteToolStripMenuItem;
+        private ToolStripMenuItemCC funcionarioToolStripMenuItem;
+        private ToolStripMenuItemCC perfilDeAcessoToolStripMenuItem;
+        private ToolStripMenuItemCC clienteRelatoriosToolStripMenuItem;
+        public BackgroundWorkerCC backgroundWorkerUpdate;
+        private EnumNivelDeAcesso _nivelUsuarioLogado;
+
+        #endregion
+
+        #region Windows Form Designer generated code
         /// <summary>
         /// Required method for Designer support - do not modify
         /// the contents of this method with the code editor.
@@ -31,110 +56,225 @@ namespace ProjetoBase.CustomControl.Form
         private void InitializeComponent()
         {
             this.menuStrip1 = new ProjetoBase.CustomControls.MenuStripCC();
+
             this.cadastroToolStripMenuItem = new ProjetoBase.CustomControls.ToolStripMenuItemCC();
+            this.relatoriosToolStripMenuItem = new ProjetoBase.CustomControls.ToolStripMenuItemCC();
+
+            this.administracaoToolStripMenuItem = new ProjetoBase.CustomControls.ToolStripMenuItemCC();
             this.rHToolStripMenuItem = new ProjetoBase.CustomControls.ToolStripMenuItemCC();
             this.cRMToolStripMenuItem = new ProjetoBase.CustomControls.ToolStripMenuItemCC();
+
             this.cargoToolStripMenuItem = new ProjetoBase.CustomControls.ToolStripMenuItemCC();
+            this.usuarioToolStripMenuItem = new ProjetoBase.CustomControls.ToolStripMenuItemCC();
+            this.funcionarioToolStripMenuItem = new ProjetoBase.CustomControls.ToolStripMenuItemCC();
             this.clienteToolStripMenuItem = new ProjetoBase.CustomControls.ToolStripMenuItemCC();
+            this.clienteRelatoriosToolStripMenuItem = new ProjetoBase.CustomControls.ToolStripMenuItemCC();
+            this.perfilDeAcessoToolStripMenuItem = new ProjetoBase.CustomControls.ToolStripMenuItemCC();
+
             this.backgroundWorkerUpdate = new ProjetoBase.CustomControls.BackgroundWorkerCC();
+
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // menuStrip1
-            // 
-            this.menuStrip1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(44)))), ((int)(((byte)(46)))));
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.cadastroToolStripMenuItem});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(817, 24);
-            this.menuStrip1.TabIndex = 1;
-            this.menuStrip1.Text = "menuStrip1";
-            // 
-            // cadastroToolStripMenuItem
-            // 
-            this.cadastroToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.rHToolStripMenuItem});
-            this.cadastroToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.cRMToolStripMenuItem});
-            this.cadastroToolStripMenuItem.ForeColor = System.Drawing.Color.White;
-            this.cadastroToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.cadastroToolStripMenuItem.Name = "cadastroToolStripMenuItem";
-            this.cadastroToolStripMenuItem.NivelDeAcesso = null;
-            this.cadastroToolStripMenuItem.Size = new System.Drawing.Size(66, 20);
+
+            // evento global de clique
+            this.menuStrip1.ItemClicked += Menu_ItemClicked;
+
+            // =======================
+            // CONFIGURAÇÃO DOS MENUS
+            // =======================
+
+            // MENU CADASTRO -------------
             this.cadastroToolStripMenuItem.Text = "Cadastro";
-            // 
-            // rHToolStripMenuItem
-            // 
-            this.rHToolStripMenuItem.BackColor = System.Drawing.SystemColors.ControlText;
-            this.rHToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.cargoToolStripMenuItem});
-            this.rHToolStripMenuItem.ForeColor = System.Drawing.Color.White;
-            this.rHToolStripMenuItem.Name = "rHToolStripMenuItem";
-            this.rHToolStripMenuItem.NivelDeAcesso = null;
-            this.rHToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.cadastroToolStripMenuItem.ForeColor = Color.White;
+            this.cadastroToolStripMenuItem.NiveisDeAcesso = new[]
+            {
+        EnumNivelDeAcesso.Administrador,
+        EnumNivelDeAcesso.RecursosHumanos
+    };
+
+            this.cadastroToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[]
+            {
+        this.administracaoToolStripMenuItem,
+        this.rHToolStripMenuItem,
+        this.cRMToolStripMenuItem
+            });
+
+            // MENU RELATÓRIOS ------------
+            this.relatoriosToolStripMenuItem.Text = "Relatórios";
+            this.relatoriosToolStripMenuItem.ForeColor = Color.White;
+            this.relatoriosToolStripMenuItem.NiveisDeAcesso = new[]
+            {
+        EnumNivelDeAcesso.Administrador,
+        EnumNivelDeAcesso.CRM
+    };
+
+            this.relatoriosToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[]
+            {
+        this.clienteRelatoriosToolStripMenuItem
+            });
+
+            // SUBMENU Administração -------
+            this.administracaoToolStripMenuItem.Text = "Administração";
+            this.administracaoToolStripMenuItem.ForeColor = Color.White;
+            this.administracaoToolStripMenuItem.NiveisDeAcesso = new[]
+            {
+        EnumNivelDeAcesso.Administrador
+    };
+
+            this.administracaoToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[]
+            {
+        this.usuarioToolStripMenuItem,
+        this.perfilDeAcessoToolStripMenuItem
+            });
+
+            // SUBMENU RH ------------------
             this.rHToolStripMenuItem.Text = "RH";
-            // 
-            // cRMToolStripMenuItem
-            // 
-            this.cRMToolStripMenuItem.BackColor = System.Drawing.SystemColors.ControlText;
-            this.cRMToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.clienteToolStripMenuItem});
-            this.cRMToolStripMenuItem.ForeColor = System.Drawing.Color.White;
-            this.cRMToolStripMenuItem.Name = "cRMToolStripMenuItem";
-            this.cRMToolStripMenuItem.NivelDeAcesso = null;
-            this.cRMToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.rHToolStripMenuItem.ForeColor = Color.White;
+            this.rHToolStripMenuItem.NiveisDeAcesso = new[]
+            {
+        EnumNivelDeAcesso.Administrador,
+        EnumNivelDeAcesso.RecursosHumanos
+    };
+
+            this.rHToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[]
+            {
+        this.cargoToolStripMenuItem,
+        this.funcionarioToolStripMenuItem
+            });
+
+            // SUBMENU CRM -----------------
             this.cRMToolStripMenuItem.Text = "CRM";
-            // 
-            // cargoToolStripMenuItem
-            // 
-            this.cargoToolStripMenuItem.BackColor = System.Drawing.SystemColors.ControlText;
-            this.cargoToolStripMenuItem.ForeColor = System.Drawing.Color.White;
-            this.cargoToolStripMenuItem.Name = "cargoToolStripMenuItem";
-            this.cargoToolStripMenuItem.NivelDeAcesso = null;
-            this.cargoToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.cRMToolStripMenuItem.ForeColor = Color.White;
+            this.cRMToolStripMenuItem.NiveisDeAcesso = new[]
+            {
+        EnumNivelDeAcesso.Administrador,
+        EnumNivelDeAcesso.CRM
+    };
+
+            this.cRMToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[]
+            {
+        this.clienteToolStripMenuItem
+            });
+
+            // SUBSUBMENUS -----------------
+
+            this.usuarioToolStripMenuItem.Text = "Usuário";
+            this.usuarioToolStripMenuItem.ForeColor = Color.White;
+            this.usuarioToolStripMenuItem.NiveisDeAcesso = new[]
+            {
+        EnumNivelDeAcesso.Administrador
+    };
+
+            this.perfilDeAcessoToolStripMenuItem.Text = "Perfil de Acesso";
+            this.perfilDeAcessoToolStripMenuItem.ForeColor = Color.White;
+            this.perfilDeAcessoToolStripMenuItem.NiveisDeAcesso = new[]
+            {
+        EnumNivelDeAcesso.Administrador
+    };
+
             this.cargoToolStripMenuItem.Text = "Cargo";
-            this.cargoToolStripMenuItem.Click += new System.EventHandler(this.cargoToolStripMenuItem_Click);
-            // 
-            // clienteToolStripMenuItem
-            // 
-            this.clienteToolStripMenuItem.BackColor = System.Drawing.SystemColors.ControlText;
-            this.clienteToolStripMenuItem.ForeColor = System.Drawing.Color.White;
-            this.clienteToolStripMenuItem.Name = "clienteToolStripMenuItem";
-            this.clienteToolStripMenuItem.NivelDeAcesso = null;
-            this.clienteToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.cargoToolStripMenuItem.ForeColor = Color.White;
+            this.cargoToolStripMenuItem.NiveisDeAcesso = new[]
+            {
+        EnumNivelDeAcesso.Administrador,
+        EnumNivelDeAcesso.RecursosHumanos
+    };
+
+            this.funcionarioToolStripMenuItem.Text = "Funcionário";
+            this.funcionarioToolStripMenuItem.ForeColor = Color.White;
+            this.funcionarioToolStripMenuItem.NiveisDeAcesso = new[]
+            {
+        EnumNivelDeAcesso.Administrador,
+        EnumNivelDeAcesso.RecursosHumanos
+    };
+
             this.clienteToolStripMenuItem.Text = "Cliente";
-            this.clienteToolStripMenuItem.Click += new System.EventHandler(this.clienteToolStripMenuItem_Click);
-            // 
-            // MenuCC
-            // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.AppWorkspace;
-            this.ClientSize = new System.Drawing.Size(817, 505);
+            this.clienteToolStripMenuItem.ForeColor = Color.White;
+            this.clienteToolStripMenuItem.NiveisDeAcesso = new[]
+            {
+        EnumNivelDeAcesso.Administrador,
+        EnumNivelDeAcesso.CRM
+    };
+
+            this.clienteRelatoriosToolStripMenuItem.Text = "Clientes";
+            this.clienteRelatoriosToolStripMenuItem.ForeColor = Color.White;
+            this.clienteRelatoriosToolStripMenuItem.NiveisDeAcesso = new[]
+            {
+        EnumNivelDeAcesso.Administrador,
+        EnumNivelDeAcesso.CRM
+    };
+
+
+            // MENUSTRIP FINAL --------------
+            this.menuStrip1.Items.AddRange(new ToolStripItem[]
+            {
+        this.cadastroToolStripMenuItem,
+        this.relatoriosToolStripMenuItem
+            });
+
+            // FORM -------------------------
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
-            this.MinimizeBox = true;
-            this.Name = "MenuCC";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "MenuCC";
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            this.Load += new System.EventHandler(this.MenuCC_Load);
-            this.menuStrip1.ResumeLayout(false);
-            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
+        }
 
+        private void Menu_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+            if (e.ClickedItem is MenuItemAcessivel menu)
+            {
+                if (!menu.Enabled)
+                {
+                    MessageBox.Show(
+                        "Você não tem acesso a esta área do sistema.",
+                        "Acesso negado",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Warning
+                    );
+
+                    return;
+                }
+            }
+        }
+
+        public void ConfigurarAcessos(EnumNivelDeAcesso nivel)
+        {
+            _nivelUsuarioLogado = nivel;
+
+            AplicarPermissaoNosMenus(menuStrip1.Items);
+        }
+
+        private void AplicarPermissaoNosMenus(ToolStripItemCollection itens)
+        {
+            foreach (ToolStripItem item in itens)
+            {
+                if (item is MenuItemAcessivel menu)
+                {
+                    // ADMINISTRADOR TEM ACESSO TOTAL
+                    if (_nivelUsuarioLogado != EnumNivelDeAcesso.Administrador)
+                    {
+                        // Se o menu tiver restrições e o usuário não estiver na lista → bloquear
+                        if (menu.NiveisDeAcesso.Any() &&
+                            !menu.NiveisDeAcesso.Contains(_nivelUsuarioLogado))
+                        {
+                            menu.Enabled = false;
+                        }
+                    }
+
+                    // Recursão para submenus
+                    if (menu.DropDownItems.Count > 0)
+                        AplicarPermissaoNosMenus(menu.DropDownItems);
+                }
+            }
         }
 
         #endregion
+    }
 
-        private MenuStripCC menuStrip1;
-        private ToolStripMenuItemCC cadastroToolStripMenuItem;
-        private ToolStripMenuItemCC rHToolStripMenuItem;
-        private ToolStripMenuItemCC cRMToolStripMenuItem;
-        private ToolStripMenuItemCC cargoToolStripMenuItem;
-        private ToolStripMenuItemCC clienteToolStripMenuItem;
-        public BackgroundWorkerCC backgroundWorkerUpdate;
+    public class MenuItemAcessivel : ToolStripMenuItem
+    {
+        public EnumNivelDeAcesso[] NiveisDeAcesso { get; set; } = Array.Empty<EnumNivelDeAcesso>();
     }
 }
+
+

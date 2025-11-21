@@ -221,5 +221,10 @@ namespace ProjetoBase.Formularios.Ferramentas
                 this.Size = new Size(224, 252);
             }
         }
+
+        private void txt_login_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

@@ -1,16 +1,6 @@
-﻿using NHibernate.Transform;
-using System;
-using System.Collections.Generic;
+﻿using ProjetoBase.DataBase.Dominio.Funcionario;
 using System.Drawing;
-using System.Linq;
-using System.Net.NetworkInformation;
-using System.Text;
-using ProjetoBase.DataBase;
-using ProjetoBase.DataBase.Dominio.Funcionario;
-using ProjetoBase.DataBase.Ferramentas;
-using ProjetoBase.Enumeradores;
 using System.Windows.Forms;
-using ProjetoBase.DataBase.Dominio;
 
 namespace ProjetoBase.Ferramentas
 {
