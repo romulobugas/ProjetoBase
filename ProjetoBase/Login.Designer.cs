@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.btn_logar = new ProjetoBase.CustomControls.BotaoCC();
+            this.btn_logar = new ProjetoBase.CustomControl.BotaoCC();
             this.SuspendLayout();
             // 
             // btn_logar
@@ -62,6 +62,6 @@
 
         #endregion
 
-        private ProjetoBase.CustomControls.BotaoCC btn_logar;
+        private ProjetoBase.CustomControl.BotaoCC btn_logar;
     }
 }

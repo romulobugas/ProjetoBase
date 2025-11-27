@@ -2,12 +2,20 @@
 
 namespace ProjetoBase.Formularios
 {
-    partial class CargoCadastro
+    partial class FuncionarioCadastro
     {
         /// <summary>
         /// Required designer variable.
         /// </summary>
         private System.ComponentModel.IContainer components = null;
+
+        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabPage tabPageDados;
+        private CustomControl.TextboxLabelCC txt_codigo;
+        private CustomControl.BotaoCC btn_cadastrar;
+        private CustomControl.BotaoCC btn_cancelar;
+        private System.Windows.Forms.Panel panel_funcionario;
+        private CustomControl.TextboxLabelCC txt_nome;
 
         /// <summary>
         /// Clean up any resources being used.
@@ -32,14 +40,14 @@ namespace ProjetoBase.Formularios
         {
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPageDados = new System.Windows.Forms.TabPage();
-            this.panel_cargo = new System.Windows.Forms.Panel();
+            this.panel_funcionario = new System.Windows.Forms.Panel();
             this.txt_codigo = new ProjetoBase.CustomControl.TextboxLabelCC();
             this.txt_nome = new ProjetoBase.CustomControl.TextboxLabelCC();
             this.btn_cancelar = new ProjetoBase.CustomControl.BotaoCC();
             this.btn_cadastrar = new ProjetoBase.CustomControl.BotaoCC();
             this.tabControl1.SuspendLayout();
             this.tabPageDados.SuspendLayout();
-            this.panel_cargo.SuspendLayout();
+            this.panel_funcionario.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -54,22 +62,22 @@ namespace ProjetoBase.Formularios
             // tabPageDados
             // 
             this.tabPageDados.BackColor = System.Drawing.SystemColors.Control;
-            this.tabPageDados.Controls.Add(this.panel_cargo);
+            this.tabPageDados.Controls.Add(this.panel_funcionario);
             this.tabPageDados.Location = new System.Drawing.Point(4, 22);
             this.tabPageDados.Name = "tabPageDados";
             this.tabPageDados.Padding = new System.Windows.Forms.Padding(3);
             this.tabPageDados.Size = new System.Drawing.Size(313, 88);
             this.tabPageDados.TabIndex = 0;
-            this.tabPageDados.Text = "Cargo";
+            this.tabPageDados.Text = "Funcionario";
             // 
-            // panel_cargo
+            // panel_funcionario
             // 
-            this.panel_cargo.Controls.Add(this.txt_codigo);
-            this.panel_cargo.Controls.Add(this.txt_nome);
-            this.panel_cargo.Location = new System.Drawing.Point(4, 2);
-            this.panel_cargo.Name = "panel_cargo";
-            this.panel_cargo.Size = new System.Drawing.Size(303, 86);
-            this.panel_cargo.TabIndex = 0;
+            this.panel_funcionario.Controls.Add(this.txt_codigo);
+            this.panel_funcionario.Controls.Add(this.txt_nome);
+            this.panel_funcionario.Location = new System.Drawing.Point(4, 2);
+            this.panel_funcionario.Name = "panel_funcionario";
+            this.panel_funcionario.Size = new System.Drawing.Size(303, 86);
+            this.panel_funcionario.TabIndex = 0;
             // 
             // txt_codigo
             // 
@@ -145,7 +153,7 @@ namespace ProjetoBase.Formularios
             this.btn_cadastrar.UseVisualStyleBackColor = true;
             this.btn_cadastrar.Click += new System.EventHandler(this.btn_cadastrar_Click);
             // 
-            // CargoCadastro
+            // FuncionarioCadastro
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -155,28 +163,16 @@ namespace ProjetoBase.Formularios
             this.Controls.Add(this.btn_cancelar);
             this.Controls.Add(this.btn_cadastrar);
             this.Controls.Add(this.tabControl1);
-            this.Name = "CargoCadastro";
-            this.Nome_janela = "Cargo";
-            this.Text = "Cargo";
+            this.Name = "FuncionarioCadastro";
+            this.Nome_janela = "Funcionario";
+            this.Text = "Funcionario";
             this.Load += new System.EventHandler(this.PessoaNovo_Load);
             this.tabControl1.ResumeLayout(false);
             this.tabPageDados.ResumeLayout(false);
-            this.panel_cargo.ResumeLayout(false);
+            this.panel_funcionario.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
-
         #endregion
-
-        private System.Windows.Forms.TabControl tabControl1;
-        private System.Windows.Forms.TabPage tabPageDados;
-        private CustomControl.TextboxLabelCC txt_codigo;
-        private CustomControl.BotaoCC btn_cadastrar;
-        private CustomControl.BotaoCC btn_cancelar;
-        private System.Windows.Forms.Panel panel_cargo;
-        private CustomControl.TextboxLabelCC txt_nome;
-
-
-
     }
 }

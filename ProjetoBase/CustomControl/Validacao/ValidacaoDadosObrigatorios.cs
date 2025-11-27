@@ -1,12 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using ProjetoBase.DataBase.Ferramentas;
 
-namespace ProjetoBase.CustomControls.Validacao
+namespace ProjetoBase.CustomControl.Validacao
 {
     public class RetornoValidacaoDados
     {

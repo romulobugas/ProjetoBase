@@ -1,6 +1,6 @@
 ﻿using ProjetoBase.Config;
-using TecnoCart.CustomControls.Input;
-using TecnoCart.CustomControls.Input.BotaoNavegacao;
+using TecnoCart.CustomControl.Input;
+using TecnoCart.CustomControl.Input.BotaoNavegacao;
 
 namespace ProjetoBase.Formularios
 {
@@ -32,13 +32,13 @@ namespace ProjetoBase.Formularios
         /// </summary>
         private void InitializeComponent()
         {
-            this.dgv_cargo = new ProjetoBase.CustomControls.Input.DataGridViewCC();
+            this.dgv_cargo = new ProjetoBase.CustomControl.Input.DataGridViewCC();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.BarraLateralBotoes = new TecnoCart.CustomControls.Input.FlowLayoutPanelBotoesCC();
-            this.btn_cadastrar = new TecnoCart.CustomControls.Input.BotaoNavegacao.BotaoAcaoCC();
-            this.btn_alterar = new TecnoCart.CustomControls.Input.BotaoNavegacao.BotaoAcaoCC();
+            this.BarraLateralBotoes = new TecnoCart.CustomControl.Input.FlowLayoutPanelBotoesCC();
+            this.btn_cadastrar = new TecnoCart.CustomControl.Input.BotaoNavegacao.BotaoAcaoCC();
+            this.btn_alterar = new TecnoCart.CustomControl.Input.BotaoNavegacao.BotaoAcaoCC();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_cargo)).BeginInit();
             this.SuspendLayout();
             // 
@@ -89,7 +89,7 @@ namespace ProjetoBase.Formularios
             // BarraLateralBotoes
             // 
             this.BarraLateralBotoes.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(44)))), ((int)(((byte)(46)))));
-            this.BarraLateralBotoes.BotoesAcao = new TecnoCart.CustomControls.Input.BotaoNavegacao.BotaoAcaoCC[] {
+            this.BarraLateralBotoes.BotoesAcao = new TecnoCart.CustomControl.Input.BotaoNavegacao.BotaoAcaoCC[] {
         this.btn_cadastrar,
         this.btn_alterar};
             this.BarraLateralBotoes.ConfigurarAtalho = false;
@@ -143,7 +143,7 @@ namespace ProjetoBase.Formularios
 
         #endregion
 
-        private CustomControls.Input.DataGridViewCC dgv_cargo;
+        private CustomControl.Input.DataGridViewCC dgv_cargo;
         private FlowLayoutPanelBotoesCC BarraLateralBotoes;
         private BotaoAcaoCC btn_cadastrar;
         private BotaoAcaoCC btn_alterar;

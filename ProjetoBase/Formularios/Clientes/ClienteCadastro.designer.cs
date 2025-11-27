@@ -1,4 +1,4 @@
-﻿using ProjetoBase.CustomControl.Form;
+﻿using ProjetoBase.CustomControl;
 
 namespace ProjetoBase.Formularios
 {
@@ -31,16 +31,16 @@ namespace ProjetoBase.Formularios
         private void InitializeComponent()
         {
             this.panel_cliente = new System.Windows.Forms.Panel();
-            this.textboxLabel_Nome = new ProjetoBase.CustomControls.TextboxLabelCC();
-            this.textboxLabel_CnpjCpf = new ProjetoBase.CustomControls.TextboxLabelCC();
-            this.textboxLabel_RgIe = new ProjetoBase.CustomControls.TextboxLabelCC();
-            this.textboxLabel_DataDeNasc = new ProjetoBase.CustomControls.TextboxLabelCC();
-            this.textboxLabel_Endereco = new ProjetoBase.CustomControls.TextboxLabelCC();
-            this.textboxLabel_Contato = new ProjetoBase.CustomControls.TextboxLabelCC();
-            this.textboxLabel_Email = new ProjetoBase.CustomControls.TextboxLabelCC();
-            this.textboxLabel_Outros = new ProjetoBase.CustomControls.TextboxLabelCC();
-            this.btn_cancelar = new ProjetoBase.CustomControls.BotaoCC();
-            this.btn_cadastrar = new ProjetoBase.CustomControls.BotaoCC();
+            this.textboxLabel_Nome = new ProjetoBase.CustomControl.TextboxLabelCC();
+            this.textboxLabel_CnpjCpf = new ProjetoBase.CustomControl.TextboxLabelCC();
+            this.textboxLabel_RgIe = new ProjetoBase.CustomControl.TextboxLabelCC();
+            this.textboxLabel_DataDeNasc = new ProjetoBase.CustomControl.TextboxLabelCC();
+            this.textboxLabel_Endereco = new ProjetoBase.CustomControl.TextboxLabelCC();
+            this.textboxLabel_Contato = new ProjetoBase.CustomControl.TextboxLabelCC();
+            this.textboxLabel_Email = new ProjetoBase.CustomControl.TextboxLabelCC();
+            this.textboxLabel_Outros = new ProjetoBase.CustomControl.TextboxLabelCC();
+            this.btn_cancelar = new ProjetoBase.CustomControl.BotaoCC();
+            this.btn_cadastrar = new ProjetoBase.CustomControl.BotaoCC();
             this.SuspendLayout();
             // 
             // panel_cliente
@@ -278,17 +278,17 @@ namespace ProjetoBase.Formularios
         #endregion
 
         #region Windows Form Designer generated code
-        //private ProjetoBase.CustomControls.TextboxLabelCC txt_nome;
-        //private ProjetoBase.CustomControls.TextboxLabelCC txt_codigo;
-        //private ProjetoBase.CustomControls.TextboxLabelCC txt_cpfCnpj;
-        //private ProjetoBase.CustomControls.TextboxLabelCC txt_rgIe;
-        //private ProjetoBase.CustomControls.TextboxLabelCC txt_dataNascFund;
-        //private ProjetoBase.CustomControls.TextboxLabelCC txt_endereco;
-        //private ProjetoBase.CustomControls.TextboxLabelCC txt_contato;
-        //private ProjetoBase.CustomControls.TextboxLabelCC txt_email;
-        //private ProjetoBase.CustomControls.TextboxLabelCC txt_outros;
-        private ProjetoBase.CustomControls.BotaoCC btn_cadastrar;
-        private ProjetoBase.CustomControls.BotaoCC btn_cancelar;
+        //private ProjetoBase.CustomControl.TextboxLabelCC txt_nome;
+        //private ProjetoBase.CustomControl.TextboxLabelCC txt_codigo;
+        //private ProjetoBase.CustomControl.TextboxLabelCC txt_cpfCnpj;
+        //private ProjetoBase.CustomControl.TextboxLabelCC txt_rgIe;
+        //private ProjetoBase.CustomControl.TextboxLabelCC txt_dataNascFund;
+        //private ProjetoBase.CustomControl.TextboxLabelCC txt_endereco;
+        //private ProjetoBase.CustomControl.TextboxLabelCC txt_contato;
+        //private ProjetoBase.CustomControl.TextboxLabelCC txt_email;
+        //private ProjetoBase.CustomControl.TextboxLabelCC txt_outros;
+        private ProjetoBase.CustomControl.BotaoCC btn_cadastrar;
+        private ProjetoBase.CustomControl.BotaoCC btn_cancelar;
         private System.Windows.Forms.Panel panel_cliente;
 
 
@@ -296,13 +296,13 @@ namespace ProjetoBase.Formularios
 
         #endregion
 
-        private CustomControls.TextboxLabelCC textboxLabel_Nome;
-        private CustomControls.TextboxLabelCC textboxLabel_CnpjCpf;
-        private CustomControls.TextboxLabelCC textboxLabel_RgIe;
-        private CustomControls.TextboxLabelCC textboxLabel_DataDeNasc;
-        private CustomControls.TextboxLabelCC textboxLabel_Endereco;
-        private CustomControls.TextboxLabelCC textboxLabel_Email;
-        private CustomControls.TextboxLabelCC textboxLabel_Contato;
-        private CustomControls.TextboxLabelCC textboxLabel_Outros;
+        private CustomControl.TextboxLabelCC textboxLabel_Nome;
+        private CustomControl.TextboxLabelCC textboxLabel_CnpjCpf;
+        private CustomControl.TextboxLabelCC textboxLabel_RgIe;
+        private CustomControl.TextboxLabelCC textboxLabel_DataDeNasc;
+        private CustomControl.TextboxLabelCC textboxLabel_Endereco;
+        private CustomControl.TextboxLabelCC textboxLabel_Email;
+        private CustomControl.TextboxLabelCC textboxLabel_Contato;
+        private CustomControl.TextboxLabelCC textboxLabel_Outros;
     }
 }

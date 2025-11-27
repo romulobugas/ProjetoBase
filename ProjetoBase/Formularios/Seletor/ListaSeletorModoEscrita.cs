@@ -1,19 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Windows.Forms;
-using ProjetoBase.DataBase.Dominio;
+﻿using ProjetoBase.DataBase.Dominio.Funcionario;
 using ProjetoBase.DataBase.Dominio.Interface;
 using ProjetoBase.Enumeradores;
 using ProjetoBase.Formularios;
-using ProjetoBase.DataBase.Dominio.Funcionario;
+using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Linq;
+using System.Windows.Forms;
 
 
-namespace ProjetoBase.CustomControls
+namespace ProjetoBase.CustomControl
 {
     public partial class ListaSeletorModoEscrita : UserControl
     {

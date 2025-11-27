@@ -2,7 +2,7 @@
 using ProjetoBase.CustomControl;
 using ProjetoBase.CustomControl.Validacao;
 using ProjetoBase.DataBase;
-using ProjetoBase.DataBase.Dominio.Cliente;
+using ProjetoBase.DataBase.Dominio.Funcionario;
 using ProjetoBase.Enumeradores;
 using ProjetoBase.Exceptions;
 using System;
@@ -13,10 +13,10 @@ using System.Windows.Forms;
 
 namespace ProjetoBase.Formularios
 {
-    public partial class ClienteMenu : MenuCC, InterfaceMenu
+    public partial class FuncionarioMenu : MenuCC, InterfaceMenu
     {
 
-        public ClienteMenu(EnumNivelDeAcesso nivelUsuario) : base(nivelUsuario)  
+        public FuncionarioMenu(EnumNivelDeAcesso nivelUsuario) : base(nivelUsuario)
         {
             InitializeComponent();
 
@@ -26,25 +26,13 @@ namespace ProjetoBase.Formularios
 
             backgroundWorkerUpdate.setMenu((InterfaceMenu)this);
         }
-
-        public ClienteMenu()
-        {
-            InitializeComponent();
-
-            //Eventos
-            btn_cadastrar.Botao.Click += botao_cadastrar_Click;
-            btn_alterar.Botao.Click += botao_alterar_Click;
-
-            backgroundWorkerUpdate.setMenu((InterfaceMenu)this);
-        }
-
 
         void botao_cadastrar_Click(object sender, EventArgs e)
         {
             if (ValidacaoNivelDeAcesso.acessoPermitido(btn_cadastrar.NivelDeAcesso))
             {
-                ClienteCadastro ClienteCadastro = new ClienteCadastro(null);
-                ClienteCadastro.ShowDialog();
+                FuncionarioCadastro funcionarioCadastro = new FuncionarioCadastro(null);
+                funcionarioCadastro.ShowDialog();
                 update();
             }
         }
@@ -53,13 +41,13 @@ namespace ProjetoBase.Formularios
         {
             if (ValidacaoNivelDeAcesso.acessoPermitido(btn_alterar.NivelDeAcesso))
             {
-                if (dgv_cliente.SelectedRows.Count > 0)
+                if (dgv_funcionario.SelectedRows.Count > 0)
                 {
-                    Cliente cliente = (Cliente)dgv_cliente.SelectedRows[0].Cells[0].Value;
-                    if (cliente != null)
+                    Funcionario funcionario = (Funcionario)dgv_funcionario.SelectedRows[0].Cells[0].Value;
+                    if (funcionario != null)
                     {
-                        ClienteAlterar ClienteAlterar = new ClienteAlterar(cliente);
-                        ClienteAlterar.ShowDialog();
+                        FuncionarioCadastro FuncionarioCadastro = new FuncionarioCadastro(funcionario);
+                        FuncionarioCadastro.ShowDialog();
                         update();
                     }
                 }
@@ -85,16 +73,16 @@ namespace ProjetoBase.Formularios
 
         }
 
-        private static IList<Cliente> procurarClientes()
+        private static IList<Funcionario> procurarFuncionarios()
         {
-            IList<Cliente> clientes = null;
+            IList<Funcionario> funcionarios = null;
 
-            clientes = SessionFactory.Session().QueryOver<Cliente>()
+            funcionarios = SessionFactory.Session().QueryOver<Funcionario>()
               .TransformUsing(Transformers.DistinctRootEntity)
               .OrderBy(c => c.Id).Asc
-              .List<Cliente>();
+              .List<Funcionario>();
 
-            return clientes;
+            return funcionarios;
         }
 
         //Detecta o botão de pesquisa
@@ -112,30 +100,24 @@ namespace ProjetoBase.Formularios
         {
             try
             {
-                IList<Cliente> clientes = procurarClientes();
+                IList<Funcionario> funcionarios = procurarFuncionarios();
 
                 DataTable dataTable = new DataTable();
-                dataTable.Columns.Add("ENTIDADE", typeof(Cliente));
+                dataTable.Columns.Add("ENTIDADE", typeof(Funcionario));
                 dataTable.Columns.Add("ID");
                 dataTable.Columns.Add("NOME");
-                dataTable.Columns.Add("CPFCNPJ");
-                dataTable.Columns.Add("RGIE");
-                dataTable.Columns.Add("ENDEREÇO");
-                dataTable.Columns.Add("CONTATO");
-                dataTable.Columns.Add("EMAIL");
-                dataTable.Columns.Add("OUTROS");
 
-                for (int contadorPosicao = 0; contadorPosicao < clientes.Count; contadorPosicao++)
+                for (int contadorPosicao = 0; contadorPosicao < funcionarios.Count; contadorPosicao++)
                 {
                     if (backgroundWorkerUpdate.CancellationPending)
                     {
                         e.Cancel = true;
                         return;
                     }
-                    Cliente cliente = (Cliente)clientes[contadorPosicao];
-                    dataTable.Rows.Add(cliente, cliente.Id, cliente.Nome, cliente.CpfCnpj,cliente.RgIe,cliente.Endereço,cliente.Contato,cliente.Email,cliente.Outros);
+                    Funcionario funcionario = (Funcionario)funcionarios[contadorPosicao];
+                    dataTable.Rows.Add(funcionario, funcionario.Id, funcionario.Nome);
                 }
-                this.dgv_cliente.BeginInvoke((MethodInvoker)delegate () { this.dgv_cliente.DataSource = dataTable; ; });
+                this.dgv_funcionario.BeginInvoke((MethodInvoker)delegate () { this.dgv_funcionario.DataSource = dataTable; ; });
             }
             catch (Exception excecao)
             {

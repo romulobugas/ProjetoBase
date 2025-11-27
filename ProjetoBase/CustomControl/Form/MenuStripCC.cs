@@ -1,16 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Diagnostics;
+﻿using ProjetoBase.Config;
+using ProjetoBase.Enumeradores;
+using System;
 using System.Drawing;
 using System.Linq;
-using System.Text;
 using System.Windows.Forms;
-using ProjetoBase.Config;
-using ProjetoBase.Enumeradores;
-using ProjetoBase.Ferramentas;
 
-namespace ProjetoBase.CustomControls
+namespace ProjetoBase.CustomControl
 {
     public class MenuStripCC : MenuStrip
     {
@@ -92,19 +87,34 @@ namespace ProjetoBase.CustomControls
 
     public class ToolStripMenuItemCC : ToolStripMenuItem
     {
-        private EnumNivelDeAcesso? nivelAcesso = null;
-
-     
-        [Description("Nivel de acesso do botão"), Category("Definição")]
-        public EnumNivelDeAcesso? NivelDeAcesso
-        {
-            get { return nivelAcesso; }
-            set { nivelAcesso = value; }
-        }
+        // PROPRIEDADE pública (não campo)
+        public EnumNivelDeAcesso[] NiveisDeAcesso { get; set; } = new EnumNivelDeAcesso[0];
 
         public ToolStripMenuItemCC()
         {
             this.ForeColor = LayoutManager.corTextoStrip;
+        }
+
+        // Atalho para um único nível
+        public EnumNivelDeAcesso NivelDeAcesso
+        {
+            get => NiveisDeAcesso != null && NiveisDeAcesso.Length > 0
+                ? NiveisDeAcesso[0]
+                : 0;
+            set => NiveisDeAcesso = new[] { value };
+        }
+
+        public bool PossuiAcesso(EnumNivelDeAcesso nivelUsuario)
+        {
+            // Admin vê tudo
+            if (nivelUsuario == EnumNivelDeAcesso.Administrador)
+                return true;
+
+            // Se não configurou nada, libera
+            if (NiveisDeAcesso == null || NiveisDeAcesso.Length == 0)
+                return true;
+
+            return NiveisDeAcesso.Contains(nivelUsuario);
         }
     }
 }

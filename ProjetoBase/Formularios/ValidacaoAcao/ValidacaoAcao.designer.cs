@@ -28,12 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.txt_login = new ProjetoBase.CustomControls.TextboxLabelCC();
-            this.txt_senha = new ProjetoBase.CustomControls.TextboxLabelCC();
+            this.txt_login = new ProjetoBase.CustomControl.TextboxLabelCC();
+            this.txt_senha = new ProjetoBase.CustomControl.TextboxLabelCC();
             this.label1 = new System.Windows.Forms.Label();
-            this.btn_ok = new ProjetoBase.CustomControls.BotaoCC();
-            this.btn_sair = new ProjetoBase.CustomControls.BotaoCC();
-            this.btn_configurar_autorizacao = new ProjetoBase.CustomControls.BotaoCC();
+            this.btn_ok = new ProjetoBase.CustomControl.BotaoCC();
+            this.btn_sair = new ProjetoBase.CustomControl.BotaoCC();
+            this.btn_configurar_autorizacao = new ProjetoBase.CustomControl.BotaoCC();
             this.SuspendLayout();
             // 
             // txt_login
@@ -56,6 +56,7 @@
             this.txt_login.TamanhoTextBox = ProjetoBase.Enumeradores.EnumTamanhoTextBox.Pequeno;
             this.txt_login.Texto = null;
             this.txt_login.TipoTextBox = ProjetoBase.Enumeradores.TipoTextBox.Texto;
+            this.txt_login.Paint += new System.Windows.Forms.PaintEventHandler(this.txt_login_Paint);
             // 
             // txt_senha
             // 
@@ -158,11 +159,11 @@
 
         #endregion
 
-        private CustomControls.TextboxLabelCC txt_login;
-        private CustomControls.TextboxLabelCC txt_senha;
+        private CustomControl.TextboxLabelCC txt_login;
+        private CustomControl.TextboxLabelCC txt_senha;
         private System.Windows.Forms.Label label1;
-        private CustomControls.BotaoCC btn_ok;
-        private CustomControls.BotaoCC btn_sair;
-        private CustomControls.BotaoCC btn_configurar_autorizacao;
+        private CustomControl.BotaoCC btn_ok;
+        private CustomControl.BotaoCC btn_sair;
+        private CustomControl.BotaoCC btn_configurar_autorizacao;
     }
 }

@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Drawing.Drawing2D;
-using System.Linq;
-using System.Text;
-using ProjetoBase.DataBase.Dominio.Interface;
+﻿using ProjetoBase.DataBase.Dominio.Interface;
 using ProjetoBase.DataBase.Ferramentas;
 using ProjetoBase.Enumeradores;
-using ProjetoBase.Formularios.Ferramentas;
+using System;
+using System.Collections.Generic;
+using System.Drawing;
 
 namespace ProjetoBase.DataBase.Dominio.Funcionario
 {

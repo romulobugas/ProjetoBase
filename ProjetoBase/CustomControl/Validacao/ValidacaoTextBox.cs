@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using ProjetoBase.Enumeradores;
+﻿using ProjetoBase.Enumeradores;
+using System;
 
-namespace ProjetoBase.CustomControls.Validacao
+namespace ProjetoBase.CustomControl.Validacao
 {
     public static class ValidacaoTextBox
     {

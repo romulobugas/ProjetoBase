@@ -1,5 +1,5 @@
-﻿using ProjetoBase.CustomControls;
-using ProjetoBase.CustomControls.Validacao;
+﻿using ProjetoBase.CustomControl;
+using ProjetoBase.CustomControl.Validacao;
 using ProjetoBase.DataBase.Dominio.Cliente;
 using ProjetoBase.DataBase.Ferramentas;
 using ProjetoBase.Enumeradores;

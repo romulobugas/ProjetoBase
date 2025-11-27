@@ -1,6 +1,6 @@
 ﻿using NHibernate.Criterion;
 using NHibernate.Transform;
-using ProjetoBase.CustomControls;
+using ProjetoBase.CustomControl;
 using ProjetoBase.DataBase;
 using ProjetoBase.DataBase.Dominio.Funcionario;
 using ProjetoBase.DataBase.Dominio.Interface;
@@ -220,6 +220,11 @@ namespace ProjetoBase.Formularios.Ferramentas
             {
                 this.Size = new Size(224, 252);
             }
+        }
+
+        private void txt_login_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

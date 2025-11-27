@@ -1,6 +1,6 @@
-﻿using ProjetoBase.CustomControls;
+﻿using ProjetoBase.CustomControl;
 using ProjetoBase.DataBase;
-using ProjetoBase.Formularios;
+using ProjetoBase.Formularios.Ferramentas;
 using System;
 
 namespace ProjetoBase
@@ -20,8 +20,8 @@ namespace ProjetoBase
         private void btn_logar_Click(object sender, EventArgs e)
         {
             SessionFactory.UnflushedSession();
-            MenuInicial MenuInicial = new MenuInicial();
-            MenuInicial.Show();
+            LoginAcesso LoginAcesso = new LoginAcesso();
+            LoginAcesso.Show();
             this.Hide();
         }
     }

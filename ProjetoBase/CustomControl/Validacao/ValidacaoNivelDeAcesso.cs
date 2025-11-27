@@ -1,15 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Windows.Forms;
-using ProjetoBase.DataBase.Dominio.Funcionario;
+﻿using ProjetoBase.DataBase.Dominio.Funcionario;
 using ProjetoBase.DataBase.Ferramentas;
 using ProjetoBase.Enumeradores;
 using ProjetoBase.Exceptions;
 using ProjetoBase.Ferramentas;
+using System;
+using System.Linq;
+using System.Windows.Forms;
 
-namespace ProjetoBase.CustomControls.Validacao
+namespace ProjetoBase.CustomControl.Validacao
 {
     public static class ValidacaoNivelDeAcesso
     {

@@ -1,5 +1,5 @@
 ﻿using ProjetoBase.CustomControls.Input;
-using ProjetoBase.CustomControls.Validacao;
+using ProjetoBase.CustomControl.Validacao;
 using ProjetoBase.Enumeradores;
 using ProjetoBase.Formularios.Ferramentas;
 using System;
@@ -8,7 +8,7 @@ using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 
-namespace ProjetoBase.CustomControls
+namespace ProjetoBase.CustomControl
 {
     public class TextboxLabelCC : Panel, CustomControl
     {
