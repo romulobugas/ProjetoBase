@@ -6,7 +6,7 @@ using System;
 using System.ComponentModel;
 using System.Windows.Forms;
 
-namespace ProjetoBase.CustomControls
+namespace ProjetoBase.CustomControl
 {
     public partial class FormCC : Form
     {

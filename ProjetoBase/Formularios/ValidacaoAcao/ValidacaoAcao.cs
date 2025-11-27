@@ -1,6 +1,6 @@
 ﻿using NHibernate.Criterion;
 using NHibernate.Transform;
-using ProjetoBase.CustomControls;
+using ProjetoBase.CustomControl;
 using ProjetoBase.DataBase;
 using ProjetoBase.DataBase.Dominio.Funcionario;
 using ProjetoBase.DataBase.Dominio.Interface;

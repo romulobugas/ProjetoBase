@@ -7,7 +7,7 @@ using System;
 using System.Linq;
 using System.Windows.Forms;
 
-namespace ProjetoBase.CustomControls.Validacao
+namespace ProjetoBase.CustomControl.Validacao
 {
     public static class ValidacaoNivelDeAcesso
     {

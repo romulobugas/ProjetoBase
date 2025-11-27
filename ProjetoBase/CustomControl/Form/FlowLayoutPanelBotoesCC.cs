@@ -1,16 +1,11 @@
-﻿using NHibernate.Transform;
-using ProjetoBase.Config;
+﻿using ProjetoBase.Config;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
-using TecnoCart.CustomControls.Input.BotaoNavegacao;
+using TecnoCart.CustomControl.Input.BotaoNavegacao;
 
 
-namespace TecnoCart.CustomControls.Input
+namespace TecnoCart.CustomControl.Input
 {
     public class FlowLayoutPanelBotoesCC : FlowLayoutPanel
     {

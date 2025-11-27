@@ -1,6 +1,5 @@
-﻿using ProjetoBase.CustomControls;
+﻿using ProjetoBase.CustomControl;
 using ProjetoBase.DataBase;
-using ProjetoBase.Formularios;
 using ProjetoBase.Formularios.Ferramentas;
 using System;
 

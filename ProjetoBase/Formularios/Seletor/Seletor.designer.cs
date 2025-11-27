@@ -29,11 +29,11 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.btn_selecionar = new ProjetoBase.CustomControls.BotaoCC();
+            this.btn_selecionar = new ProjetoBase.CustomControl.BotaoCC();
             this.lb_titulo = new System.Windows.Forms.Label();
-            this.btn_cancelar = new ProjetoBase.CustomControls.BotaoCC();
+            this.btn_cancelar = new ProjetoBase.CustomControl.BotaoCC();
             this.txt_filtro = new System.Windows.Forms.TextBox();
-            this.btn_novo = new ProjetoBase.CustomControls.BotaoCC();
+            this.btn_novo = new ProjetoBase.CustomControl.BotaoCC();
             this.dgv_seletor = new System.Windows.Forms.DataGridView();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Codigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -54,7 +54,7 @@
             this.Documento = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabControlPessoa = new System.Windows.Forms.TabControl();
             this.timerEscrita = new System.Windows.Forms.Timer(this.components);
-            this.seletorSecundario = new ProjetoBase.CustomControls.SeletorCC();
+            this.seletorSecundario = new ProjetoBase.CustomControl.SeletorCC();
             this.panelTabela = new System.Windows.Forms.Panel();
             this.lbLegendaAnexosPessoa = new System.Windows.Forms.Label();
             this.cbMostrarRegistradas = new System.Windows.Forms.CheckBox();
@@ -476,11 +476,11 @@
         }
 
         #endregion
-        private ProjetoBase.CustomControls.BotaoCC btn_selecionar;
+        private ProjetoBase.CustomControl.BotaoCC btn_selecionar;
         private System.Windows.Forms.Label lb_titulo;
-        private ProjetoBase.CustomControls.BotaoCC btn_cancelar;
+        private ProjetoBase.CustomControl.BotaoCC btn_cancelar;
         private System.Windows.Forms.TextBox txt_filtro;
-        private ProjetoBase.CustomControls.BotaoCC btn_novo;
+        private ProjetoBase.CustomControl.BotaoCC btn_novo;
         private System.Windows.Forms.DataGridView dgv_seletor;
         private System.Windows.Forms.TabPage tabPagePessoaJuridica;
         private System.Windows.Forms.DataGridView dgv_pessoa_juridica;
@@ -488,7 +488,7 @@
         private System.Windows.Forms.DataGridView dgv_pessoa_fisica;
         private System.Windows.Forms.TabControl tabControlPessoa;
         private System.Windows.Forms.Timer timerEscrita;
-        private CustomControls.SeletorCC seletorSecundario;
+        private CustomControl.SeletorCC seletorSecundario;
         private System.Windows.Forms.Panel panelTabela;
         private System.Windows.Forms.Label lbLegendaAnexosPessoa;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;

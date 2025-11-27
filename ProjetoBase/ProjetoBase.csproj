@@ -161,6 +161,8 @@
     <Compile Include="Ferramentas\ConfigManager.cs" />
     <Compile Include="Ferramentas\ExcecaoManager.cs" />
     <Compile Include="Ferramentas\InstanciaServidor.cs" />
+    <Compile Include="Ferramentas\MenuBuilder.cs" />
+    <Compile Include="Ferramentas\MenuConfig.cs" />
     <Compile Include="Ferramentas\Serializacao.cs" />
     <Compile Include="Ferramentas\SessaoSistema.cs" />
     <Compile Include="Ferramentas\VersaoTecnoCart.cs" />
@@ -199,6 +201,18 @@
     </Compile>
     <Compile Include="Formularios\Ferramentas\ReconectarBancoCadastro.designer.cs">
       <DependentUpon>ReconectarBancoCadastro.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Funcionarios\FuncionarioCadastro.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Funcionarios\FuncionarioCadastro.designer.cs">
+      <DependentUpon>FuncionarioCadastro.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Funcionarios\FuncionarioMenu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Funcionarios\FuncionarioMenu.designer.cs">
+      <DependentUpon>FuncionarioMenu.cs</DependentUpon>
     </Compile>
     <Compile Include="Formularios\MenuInicial.cs">
       <SubType>Form</SubType>
@@ -270,6 +284,13 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Ferramentas\ReconectarBancoCadastro.resx">
       <DependentUpon>ReconectarBancoCadastro.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Funcionarios\FuncionarioCadastro.resx">
+      <DependentUpon>FuncionarioCadastro.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Funcionarios\FuncionarioMenu.resx">
+      <DependentUpon>FuncionarioMenu.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\MenuInicial.resx">
       <DependentUpon>MenuInicial.cs</DependentUpon>

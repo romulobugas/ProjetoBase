@@ -8,24 +8,24 @@ using System.Windows.Forms;
 
 namespace ProjetoBase.Formularios
 {
-    public partial class CargoCadastro : FormCC
+    public partial class FuncionarioCadastro : FormCC
     {
-        Cargo cargo = null;
+        Funcionario funcionario = null;
 
-        public CargoCadastro(Cargo cargo)
+        public FuncionarioCadastro(Funcionario funcionario)
         {
             InitializeComponent();
-            this.cargo = cargo;
-            carregarCargo();
+            this.funcionario = funcionario;
+            carregarFuncionario();
         }
 
         //Carrega dados de um Cargo se ja cadastrado
-        public void carregarCargo()
+        public void carregarFuncionario()
         {
-            if (cargo != null)
+            if (funcionario != null)
             {
-                txt_codigo.Texto = cargo.Codigo;
-                txt_nome.Texto = cargo.Nome;
+                txt_codigo.Texto = funcionario.Codigo;
+                txt_nome.Texto = funcionario.Nome;
                 btn_cadastrar.TipoBotao = TipoBotao.Salvar;
             }
         }
@@ -38,21 +38,21 @@ namespace ProjetoBase.Formularios
         //Cadastrar ou salvar cargo
         private void btn_cadastrar_Click(object sender, EventArgs e)
         {
-            RetornoValidacaoDados retorno = ValidacaoDadosObrigatorios.validarPanelObrigatorio(panel_cargo);
+            RetornoValidacaoDados retorno = ValidacaoDadosObrigatorios.validarPanelObrigatorio(panel_funcionario);
             if (retorno.Valido)
             {
-                cargo = new Cargo();
-                cargo.Nome = txt_nome.Texto;
+                funcionario = new Funcionario();
+                funcionario.Nome = txt_nome.Texto;
 
-                EnumResultadoQuery retornoQuery = Repositorios.Cargo.Salvar(cargo);
-                DispararEventoSalvo(cargo);
+                EnumResultadoQuery retornoQuery = Repositorios.Funcionario.Salvar(funcionario);
+                DispararEventoSalvo(funcionario);
                 mostrarMensagemResultado(retornoQuery);
             }
         }
 
         private void btn_cancelar_Click(object sender, EventArgs e)
         {
-            cancelarEdicao(cargo);
+            cancelarEdicao(funcionario);
         }
 
         private void btn_add_tipo_ato_Click(object sender, EventArgs e)

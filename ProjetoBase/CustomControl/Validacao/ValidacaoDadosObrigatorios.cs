@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Windows.Forms;
 
-namespace ProjetoBase.CustomControls.Validacao
+namespace ProjetoBase.CustomControl.Validacao
 {
     public class RetornoValidacaoDados
     {

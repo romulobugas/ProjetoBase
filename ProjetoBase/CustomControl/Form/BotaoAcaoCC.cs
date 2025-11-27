@@ -5,7 +5,7 @@ using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace TecnoCart.CustomControls.Input.BotaoNavegacao
+namespace TecnoCart.CustomControl.Input.BotaoNavegacao
 {
     public class BotaoAcaoCC : Control
     {

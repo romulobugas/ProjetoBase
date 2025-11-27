@@ -1,8 +1,6 @@
-﻿using NHibernate.Criterion;
-using ProjetoBase.CustomControls;
+﻿using ProjetoBase.CustomControl;
 using ProjetoBase.DataBase;
 using ProjetoBase.DataBase.Dominio.Funcionario;
-using ProjetoBase.Ferramentas;
 using ProjetoBase.Ferramentas.Seguranca;
 using System;
 using System.Windows.Forms;
@@ -38,9 +36,10 @@ namespace ProjetoBase.Formularios.Ferramentas
             {
                 UsuarioLogado = usuario;
                 DialogResult = DialogResult.Yes;
-                MenuInicial MenuInicial = new MenuInicial();
+
+                MenuInicial menu = new MenuInicial(usuario);
                 this.Close();
-                MenuInicial.Show();
+                menu.Show();
             }
             else
             {
@@ -52,6 +51,7 @@ namespace ProjetoBase.Formularios.Ferramentas
                 );
             }
         }
+
 
         // ============================================
         // MÉTODO PARA VALIDAR LOGIN

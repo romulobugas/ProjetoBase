@@ -1,4 +1,4 @@
-﻿using ProjetoBase.CustomControls;
+﻿using ProjetoBase.CustomControl;
 using ProjetoBase.DataBase;
 using ProjetoBase.DataBase.Dominio.Funcionario;
 using ProjetoBase.Ferramentas.Rede;

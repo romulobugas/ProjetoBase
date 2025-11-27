@@ -1,9 +1,9 @@
 ﻿using NHibernate.Transform;
-using ProjetoBase.CustomControl.Form;
-using ProjetoBase.CustomControls;
-using ProjetoBase.CustomControls.Validacao;
+using ProjetoBase.CustomControl;
+using ProjetoBase.CustomControl.Validacao;
 using ProjetoBase.DataBase;
 using ProjetoBase.DataBase.Dominio.Funcionario;
+using ProjetoBase.Enumeradores;
 using ProjetoBase.Exceptions;
 using System;
 using System.Collections.Generic;
@@ -16,18 +16,16 @@ namespace ProjetoBase.Formularios
     public partial class CargoMenu : MenuCC, InterfaceMenu
     {
 
-        public CargoMenu()
+        public CargoMenu(EnumNivelDeAcesso nivelUsuario) : base(nivelUsuario)
         {
             InitializeComponent();
 
             //Eventos
             btn_cadastrar.Botao.Click += botao_cadastrar_Click;
             btn_alterar.Botao.Click += botao_alterar_Click;
-            //Eventos
 
-            backgroundWorkerUpdate.setMenu(this);
+            backgroundWorkerUpdate.setMenu((InterfaceMenu)this);
         }
-
 
         void botao_cadastrar_Click(object sender, EventArgs e)
         {

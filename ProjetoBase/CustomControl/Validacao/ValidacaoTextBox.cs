@@ -1,7 +1,7 @@
 ﻿using ProjetoBase.Enumeradores;
 using System;
 
-namespace ProjetoBase.CustomControls.Validacao
+namespace ProjetoBase.CustomControl.Validacao
 {
     public static class ValidacaoTextBox
     {

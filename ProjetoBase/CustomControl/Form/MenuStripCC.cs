@@ -1,9 +1,11 @@
 ﻿using ProjetoBase.Config;
-using ProjetoBase.CustomControl.Form;
+using ProjetoBase.Enumeradores;
+using System;
 using System.Drawing;
+using System.Linq;
 using System.Windows.Forms;
 
-namespace ProjetoBase.CustomControls
+namespace ProjetoBase.CustomControl
 {
     public class MenuStripCC : MenuStrip
     {
@@ -27,32 +29,92 @@ namespace ProjetoBase.CustomControls
 
     public class MyColors : ProfessionalColorTable
     {
-        public override Color MenuItemSelected => LayoutManager.corSelecaoItemMenuStrip;
-        public override Color ToolStripDropDownBackground => LayoutManager.corItemMenuStrip;
+        public override Color MenuItemSelected
+        {
+            get { return LayoutManager.corSelecaoItemMenuStrip; }
+        }
 
-        public override Color ImageMarginGradientBegin => LayoutManager.corItemMenuStrip;
-        public override Color ImageMarginGradientEnd => LayoutManager.corItemMenuStrip;
-        public override Color ImageMarginGradientMiddle => LayoutManager.corItemMenuStrip;
+        public override Color ToolStripDropDownBackground
+        {
+            get { return LayoutManager.corItemMenuStrip; }
+        }
 
-        public override Color MenuItemSelectedGradientBegin => LayoutManager.corSelecaoItemMenuStrip;
-        public override Color MenuItemSelectedGradientEnd => LayoutManager.corSelecaoItemMenuStrip;
+        public override Color ImageMarginGradientBegin
+        {
+            get { return LayoutManager.corItemMenuStrip; }
+        }
 
-        public override Color MenuItemPressedGradientBegin => LayoutManager.corSelecaoItemMenuStrip;
-        public override Color MenuItemPressedGradientMiddle => LayoutManager.corSelecaoItemMenuStrip;
-        public override Color MenuItemPressedGradientEnd => LayoutManager.corSelecaoItemMenuStrip;
+        public override Color ImageMarginGradientEnd
+        {
+            get { return LayoutManager.corItemMenuStrip; }
+        }
 
-        public override Color MenuItemBorder => LayoutManager.corSelecaoItemMenuStrip;
+        public override Color ImageMarginGradientMiddle
+        {
+            get { return LayoutManager.corItemMenuStrip; }
+        }
+
+        public override Color MenuItemSelectedGradientBegin
+        {
+            get { return LayoutManager.corSelecaoItemMenuStrip; }
+        }
+        public override Color MenuItemSelectedGradientEnd
+        {
+            get { return LayoutManager.corSelecaoItemMenuStrip; }
+        }
+
+        public override Color MenuItemPressedGradientBegin
+        {
+            get { return LayoutManager.corSelecaoItemMenuStrip; }
+        }
+
+        public override Color MenuItemPressedGradientMiddle
+        {
+            get { return LayoutManager.corSelecaoItemMenuStrip; }
+        }
+
+        public override Color MenuItemPressedGradientEnd
+        {
+            get { return LayoutManager.corSelecaoItemMenuStrip; }
+        }
+
+        public override Color MenuItemBorder
+        {
+            get { return LayoutManager.corSelecaoItemMenuStrip; }
+        }
+
     }
 
-    /// <summary>
-    /// Menu customizado que mantém estilo visual,
-    /// mas herda o sistema de acesso corretamente.
-    /// </summary>
-    public class ToolStripMenuItemCC : MenuItemAcessivel
+    public class ToolStripMenuItemCC : ToolStripMenuItem
     {
+        // PROPRIEDADE pública (não campo)
+        public EnumNivelDeAcesso[] NiveisDeAcesso { get; set; } = new EnumNivelDeAcesso[0];
+
         public ToolStripMenuItemCC()
         {
             this.ForeColor = LayoutManager.corTextoStrip;
+        }
+
+        // Atalho para um único nível
+        public EnumNivelDeAcesso NivelDeAcesso
+        {
+            get => NiveisDeAcesso != null && NiveisDeAcesso.Length > 0
+                ? NiveisDeAcesso[0]
+                : 0;
+            set => NiveisDeAcesso = new[] { value };
+        }
+
+        public bool PossuiAcesso(EnumNivelDeAcesso nivelUsuario)
+        {
+            // Admin vê tudo
+            if (nivelUsuario == EnumNivelDeAcesso.Administrador)
+                return true;
+
+            // Se não configurou nada, libera
+            if (NiveisDeAcesso == null || NiveisDeAcesso.Length == 0)
+                return true;
+
+            return NiveisDeAcesso.Contains(nivelUsuario);
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿namespace ProjetoBase.CustomControls
+﻿namespace ProjetoBase.CustomControl
 {
     partial class ListaSeletorModoEscrita
     {

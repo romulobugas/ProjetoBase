@@ -16,13 +16,13 @@
 
         private void InitializeComponent()
         {
-            this.txt_login = new ProjetoBase.CustomControls.TextboxLabelCC();
-            this.txt_senha = new ProjetoBase.CustomControls.TextboxLabelCC();
-            this.txt_confirmarSenha = new ProjetoBase.CustomControls.TextboxLabelCC();
-            this.txt_nome = new ProjetoBase.CustomControls.TextboxLabelCC();
+            this.txt_login = new ProjetoBase.CustomControl.TextboxLabelCC();
+            this.txt_senha = new ProjetoBase.CustomControl.TextboxLabelCC();
+            this.txt_confirmarSenha = new ProjetoBase.CustomControl.TextboxLabelCC();
+            this.txt_nome = new ProjetoBase.CustomControl.TextboxLabelCC();
             this.chk_admin = new System.Windows.Forms.CheckBox();
-            this.btn_salvar = new ProjetoBase.CustomControls.BotaoCC();
-            this.btn_cancelar = new ProjetoBase.CustomControls.BotaoCC();
+            this.btn_salvar = new ProjetoBase.CustomControl.BotaoCC();
+            this.btn_cancelar = new ProjetoBase.CustomControl.BotaoCC();
             this.SuspendLayout();
             // 
             // txt_login
@@ -162,12 +162,12 @@
 
         #endregion
 
-        private CustomControls.TextboxLabelCC txt_login;
-        private CustomControls.TextboxLabelCC txt_senha;
-        private CustomControls.TextboxLabelCC txt_confirmarSenha;
-        private CustomControls.TextboxLabelCC txt_nome;
+        private CustomControl.TextboxLabelCC txt_login;
+        private CustomControl.TextboxLabelCC txt_senha;
+        private CustomControl.TextboxLabelCC txt_confirmarSenha;
+        private CustomControl.TextboxLabelCC txt_nome;
         private System.Windows.Forms.CheckBox chk_admin;
-        private CustomControls.BotaoCC btn_salvar;
-        private CustomControls.BotaoCC btn_cancelar;
+        private CustomControl.BotaoCC btn_salvar;
+        private CustomControl.BotaoCC btn_cancelar;
     }
 }

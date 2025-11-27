@@ -1,18 +1,8 @@
-﻿using NHibernate.Criterion;
-using NHibernate.Transform;
+﻿using ProjetoBase.CustomControl;
+using ProjetoBase.DataBase;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Threading;
 using System.Windows.Forms;
-using ProjetoBase.CustomControls;
-using ProjetoBase.DataBase;
-using ProjetoBase.DataBase.Dominio.Funcionario;
-using ProjetoBase.Ferramentas;
 
 namespace ProjetoBase.Formularios.Ferramentas
 {
